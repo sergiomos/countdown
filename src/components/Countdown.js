@@ -163,7 +163,7 @@ export default class Countdown extends Component {
           status={ status }
         />
 
-        { permission === 'denied' && <NotificationDenied />}
+        { permission !== 'granted' && <NotificationDenied />}
          
          
       </div>
