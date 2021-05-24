@@ -7,7 +7,7 @@ export default class Timer extends Component {
     if(status === 'code') {
       return (
         <div className="goBack">
-          <span className="backToClasse">Voltamos</span>
+          <span >Let's Code!</span>
         </div>
       )
     }
