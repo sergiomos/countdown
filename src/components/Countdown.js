@@ -65,6 +65,8 @@ export default class Countdown extends Component {
     Notification.requestPermission();
   };
 
+  toDecimal = (number) => (number < 10 ? `0${number}` : number);
+
   startTimer = () => {
     const { time } = this.state
 
@@ -77,8 +79,8 @@ export default class Countdown extends Component {
         const seconds = (time - minutes * 60)
         this.setState({
           time,
-          minutes: minutes < 10 ? `0${minutes}` : minutes,
-          seconds: seconds < 10 ? `0${seconds}` : seconds,
+          minutes: this.toDecimal(minutes),
+          seconds: this.toDecimal(seconds),
           timePercentage,
         })
       }, 1000);
@@ -105,10 +107,14 @@ export default class Countdown extends Component {
   };
 
   addTime = () => {
-    this.setState((prevState) =>  ({
-      time: prevState.time + 60,
-      totalTime: prevState.totalTime + 60
-    }))
+    this.setState((prevState) =>  {
+      const minutes = Number(prevState.minutes) + 1
+      return {
+        time: prevState.time + 60,
+        totalTime: prevState.totalTime + 60,
+        minutes: this.toDecimal(minutes),
+      }
+    })
   };
 
   setTime = () => {
@@ -124,8 +130,8 @@ export default class Countdown extends Component {
       this.setState({
         time,
         totalTime: time,
-        minutes: minutes < 10 ? `0${minutes}` : minutes,
-        seconds: seconds < 10 ? `0${seconds}` : seconds,
+        minutes: this.toDecimal(minutes),
+        seconds: this.toDecimal(seconds),
       })
     }
   };
