@@ -3,9 +3,8 @@ const INITIAL_STATE = {
   rightMin: "",
   leftSec: "",
   rightSec: "",
+  timePercentage: 100,
   status: "stopped",
-  time: 0,
-  totalTime: 0,
 };
 
 export default INITIAL_STATE;
