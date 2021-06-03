@@ -5,18 +5,13 @@ import CountdownFields from './CountdownFields';
 import NotificationDenied from './NotificationDenied';
 import Timer from './Timer';
 import NotificationSound from '../audios/notification.mp3'
+import INITIAL_STATE from '../services/InitialState'
 
 export default class Countdown extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      leftMin: "",
-      rightMin: "",
-      leftSec: "",
-      rightSec: "",
-      status: "stopped"
-    };
+    this.state = INITIAL_STATE;
   };
 
   componentDidMount() {
@@ -103,7 +98,7 @@ export default class Countdown extends Component {
   }
 
   stopTimer = (status) => {
-    this.setState({ status, }, () => {
+    this.setState({...INITIAL_STATE, status}, () => {
       const { timerID } = this.state
       clearInterval(timerID)
     })
