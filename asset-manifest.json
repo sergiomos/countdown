@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/countdown/static/css/main.93a54bc7.chunk.css",
-    "main.js": "/countdown/static/js/main.b86e6bda.chunk.js",
-    "main.js.map": "/countdown/static/js/main.b86e6bda.chunk.js.map",
+    "main.js": "/countdown/static/js/main.a13949aa.chunk.js",
+    "main.js.map": "/countdown/static/js/main.a13949aa.chunk.js.map",
     "runtime-main.js": "/countdown/static/js/runtime-main.9061c35f.js",
     "runtime-main.js.map": "/countdown/static/js/runtime-main.9061c35f.js.map",
-    "static/js/2.6f5e7dc5.chunk.js": "/countdown/static/js/2.6f5e7dc5.chunk.js",
-    "static/js/2.6f5e7dc5.chunk.js.map": "/countdown/static/js/2.6f5e7dc5.chunk.js.map",
+    "static/js/2.118ae613.chunk.js": "/countdown/static/js/2.118ae613.chunk.js",
+    "static/js/2.118ae613.chunk.js.map": "/countdown/static/js/2.118ae613.chunk.js.map",
     "index.html": "/countdown/index.html",
     "static/css/main.93a54bc7.chunk.css.map": "/countdown/static/css/main.93a54bc7.chunk.css.map",
-    "static/js/2.6f5e7dc5.chunk.js.LICENSE.txt": "/countdown/static/js/2.6f5e7dc5.chunk.js.LICENSE.txt",
+    "static/js/2.118ae613.chunk.js.LICENSE.txt": "/countdown/static/js/2.118ae613.chunk.js.LICENSE.txt",
     "static/media/notification.b9f3432c.mp3": "/countdown/static/media/notification.b9f3432c.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.9061c35f.js",
-    "static/js/2.6f5e7dc5.chunk.js",
+    "static/js/2.118ae613.chunk.js",
     "static/css/main.93a54bc7.chunk.css",
-    "static/js/main.b86e6bda.chunk.js"
+    "static/js/main.a13949aa.chunk.js"
   ]
 }
