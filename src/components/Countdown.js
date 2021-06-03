@@ -5,18 +5,13 @@ import CountdownFields from './CountdownFields';
 import NotificationDenied from './NotificationDenied';
 import Timer from './Timer';
 import NotificationSound from '../audios/notification.mp3'
+import INITIAL_STATE from '../services/InitialState'
 
 export default class Countdown extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      leftMin: "",
-      rightMin: "",
-      leftSec: "",
-      rightSec: "",
-      status: "stopped"
-    };
+    this.state = INITIAL_STATE;
   };
 
   componentDidMount() {
@@ -70,6 +65,8 @@ export default class Countdown extends Component {
     Notification.requestPermission();
   };
 
+  toDecimal = (number) => (number < 10 ? `0${number}` : number);
+
   startTimer = () => {
     const { time } = this.state
 
@@ -82,8 +79,8 @@ export default class Countdown extends Component {
         const seconds = (time - minutes * 60)
         this.setState({
           time,
-          minutes: minutes < 10 ? `0${minutes}` : minutes,
-          seconds: seconds < 10 ? `0${seconds}` : seconds,
+          minutes: this.toDecimal(minutes),
+          seconds: this.toDecimal(seconds),
           timePercentage,
         })
       }, 1000);
@@ -103,17 +100,21 @@ export default class Countdown extends Component {
   }
 
   stopTimer = (status) => {
-    this.setState({ status, }, () => {
+    this.setState({...INITIAL_STATE, status}, () => {
       const { timerID } = this.state
       clearInterval(timerID)
     })
   };
 
   addTime = () => {
-    this.setState((prevState) =>  ({
-      time: prevState.time + 60,
-      totalTime: prevState.totalTime + 60
-    }))
+    this.setState((prevState) =>  {
+      const minutes = Number(prevState.minutes) + 1
+      return {
+        time: prevState.time + 60,
+        totalTime: prevState.totalTime + 60,
+        minutes: this.toDecimal(minutes),
+      }
+    })
   };
 
   setTime = () => {
@@ -129,8 +130,8 @@ export default class Countdown extends Component {
       this.setState({
         time,
         totalTime: time,
-        minutes: minutes < 10 ? `0${minutes}` : minutes,
-        seconds: seconds < 10 ? `0${seconds}` : seconds,
+        minutes: this.toDecimal(minutes),
+        seconds: this.toDecimal(seconds),
       })
     }
   };
