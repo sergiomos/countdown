@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { CircleProgress } from 'react-gradient-progress'
+import AddTime from './AddTime';
 
 export default class Timer extends Component {
   render() {
-    const { minutes, seconds, status, percentage = 100 } = this.props;
+    const { minutes, seconds, status, percentage = 100, onClick } = this.props;
     if(status === 'code') {
       return (
         <div className="goBack">
@@ -26,6 +27,7 @@ export default class Timer extends Component {
         <span>:</span>
         <span>{ seconds }</span>
       </div>
+      <AddTime onClick={ onClick }/>
       </div>
     )
   }

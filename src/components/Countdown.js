@@ -21,7 +21,7 @@ export default class Countdown extends Component {
 
   componentDidMount() {
     this.requestNotification();
-  }
+  };
 
   componentDidUpdate() {
     const { time, status } = this.state;
@@ -34,7 +34,7 @@ export default class Countdown extends Component {
       }
     }
 
-  }
+  };
 
   handleClick = async () => {
     const { status } = this.state;
@@ -47,7 +47,7 @@ export default class Countdown extends Component {
         await this.startTimer();
         break;
     }
-  }
+  };
 
   handleChange = (event) => {
     const { target } = event;
@@ -58,17 +58,17 @@ export default class Countdown extends Component {
       target.parentNode.nextSibling.nextSibling.firstChild.focus()
     }
 
-  }
+  };
 
   sendNotification = (message) => {
     const audio = new Audio(NotificationSound);
     new Notification(message);
     audio.play();
-  }
+  };
 
   requestNotification = () => {
     Notification.requestPermission();
-  }
+  };
 
   startTimer = () => {
     const { time } = this.state
@@ -107,7 +107,14 @@ export default class Countdown extends Component {
       const { timerID } = this.state
       clearInterval(timerID)
     })
-  }
+  };
+
+  addTime = () => {
+    this.setState((prevState) =>  ({
+      time: prevState.time + 60,
+      totalTime: prevState.totalTime + 60
+    }))
+  };
 
   setTime = () => {
     const {status} = this.state;
@@ -126,7 +133,7 @@ export default class Countdown extends Component {
         seconds: seconds < 10 ? `0${seconds}` : seconds,
       })
     }
-  }
+  };
 
   getTime = ({ target: { name, value } }) => {
     this.setState({
@@ -154,6 +161,7 @@ export default class Countdown extends Component {
             seconds={ seconds }
             status={ status }
             percentage={ timePercentage }
+            onClick={ this.addTime }
           />
         }
         
